@@ -74,9 +74,16 @@ class CustomerControllerTest {
     }
 
     @Test
+    void getCustomerById_InvalidInput() {
+
+        BadRequestException exception = assertThrows(BadRequestException.class, () -> customerController.getCustomerById(0L));
+        assertEquals("Invalid Customer id", exception.getMessage());
+    }
+
+    @Test
     void getCustomerById_DataNotPresent() {
 
-        ResourceNotFoundException exception = assertThrows(ResourceNotFoundException.class, () -> customerController.getCustomerById(1L).getBody());
+        ResourceNotFoundException exception = assertThrows(ResourceNotFoundException.class, () -> customerController.getCustomerById(1L));
         assertEquals("Customer wth id 1 not found", exception.getMessage());
     }
 

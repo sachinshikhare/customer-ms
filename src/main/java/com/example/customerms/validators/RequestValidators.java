@@ -12,16 +12,16 @@ public class RequestValidators {
         if (customerDTO == null) {
             throw new BadRequestException("Invalid request");
         }
-        if (StringUtils.isEmpty(customerDTO.getCustomerName())) {
+        if (!StringUtils.hasText(customerDTO.getCustomerName())) {
             throw new BadRequestException("Invalid Customer name");
         }
-        if (StringUtils.isEmpty(customerDTO.getEmailId())) {
+        if (!StringUtils.hasText(customerDTO.getEmailId())) {
             throw new BadRequestException("Invalid Customer email id");
         }
     }
 
     public void validateInputCustomerId(Long customerId) {
-        if (StringUtils.isEmpty(customerId)) {
+        if (customerId <= 0) {
             throw new BadRequestException("Invalid Customer id");
         }
     }

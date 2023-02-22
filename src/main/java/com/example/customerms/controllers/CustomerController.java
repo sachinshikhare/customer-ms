@@ -55,9 +55,10 @@ public class CustomerController {
 
     @PutMapping("/{customerId}")
     public ResponseEntity<Customer> updateCustomerById(@PathVariable Long customerId, @RequestBody Customer customer) {
-        CustomerDTO customerDTO = customerService.updateCustomerById(customerId, mapper.mapCustomerToCustomerDTO(customer));
+        CustomerDTO customerDTO = mapper.mapCustomerToCustomerDTO(customer);
         requestValidators.validateRequest(customerDTO, customerId);
-        Customer customerResponse = mapper.mapCustomerDTOToCustomer(customerDTO);
+        CustomerDTO updatedCustomerDTO = customerService.updateCustomerById(customerId, customerDTO);
+        Customer customerResponse = mapper.mapCustomerDTOToCustomer(updatedCustomerDTO);
         return new ResponseEntity<>(customerResponse, HttpStatus.OK);
     }
 

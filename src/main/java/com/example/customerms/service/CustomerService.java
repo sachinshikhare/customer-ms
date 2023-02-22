@@ -1,6 +1,5 @@
 package com.example.customerms.service;
 
-import com.example.customerms.exceptions.ResourceNotFoundException;
 import com.example.customerms.model.CustomerDTO;
 import com.example.customerms.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
