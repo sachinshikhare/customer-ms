@@ -33,6 +33,7 @@ class CustomerControllerTest {
         ResponseEntity<Customer> response = customerController.createCustomer(customer);
         Customer customerResponse = response.getBody();
         assertNotNull(customerResponse);
+        assertNotNull(customer);
         assertEquals(customer.getCustomerName(), customerResponse.getCustomerName());
     }
 
